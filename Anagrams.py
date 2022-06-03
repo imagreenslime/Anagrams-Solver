@@ -1,10 +1,7 @@
 import random
 class anagrams:
-    def main(self):
-        valid = []
-        letters = ["e","c","t","n","a","a"]
-        #while len(valid) < 15:
-        #letters = self.randomletters()
+    def main(self, letters):
+        letters = ["","","","","",""]
         wordset = self.load_word_set()
         valid = self.anagram_checker(letters,wordset)
         valid = (sorted(valid, key=len, reverse=True))
@@ -17,22 +14,7 @@ class anagrams:
             for line in f.readlines():
                 word = line.strip().lower()
                 word_set.append(word)
-
         return word_set
-
-    def randomletters(self):
-        letters = []
-        alphabet = "abcdefghijklmnopqrstuvwxyz"
-        vowels = "euioa"
-        vowelcount = random.randint(1, 3)
-        for _ in range(vowelcount):
-            vowel = random.randint(0, 4)
-            letters.append(vowels[vowel])
-        for _ in range(7 - len(letters)):
-            letter = random.randint(0, 25)
-            letters.append(alphabet[letter])
-        return(letters)
-
     def anagram_checker(self, letters, wordbank):
         sol = set()
 
@@ -70,8 +52,9 @@ class anagrams:
         with open('valid-words.txt', 'w') as files:
             new_line = '\n'.join(word_set)
             files.write(new_line)
+letters = ["a","b","c","d","e"]
 sol = anagrams()
-sol.main()
+sol.main(letters)
 
 
 
